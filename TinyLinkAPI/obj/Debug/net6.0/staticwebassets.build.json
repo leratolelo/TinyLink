@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ZLFVmPhuI6IqO3Q00FtliVmLy1ZBUDUcUKvvZrVhkT0=",
+  "Source": "TinyLink.API",
+  "BasePath": "_content/TinyLink.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
