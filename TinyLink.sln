@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinyLink.API", "TinyLinkAPI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityAPI", "IdentityAPI\IdentityAPI\IdentityAPI.csproj", "{9E642583-19D0-41D7-BCCD-77DC97052454}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyLinkAPI.Tests", "TinyLinkAPI.Tests\TinyLinkAPI.Tests.csproj", "{D7A1D143-9AD1-49BE-9E6E-B0A2DD59B067}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9E642583-19D0-41D7-BCCD-77DC97052454}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E642583-19D0-41D7-BCCD-77DC97052454}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E642583-19D0-41D7-BCCD-77DC97052454}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7A1D143-9AD1-49BE-9E6E-B0A2DD59B067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A1D143-9AD1-49BE-9E6E-B0A2DD59B067}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A1D143-9AD1-49BE-9E6E-B0A2DD59B067}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A1D143-9AD1-49BE-9E6E-B0A2DD59B067}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

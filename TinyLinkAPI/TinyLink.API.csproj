@@ -28,4 +28,9 @@
     <ProjectReference Include="..\TinyLink\TinyLink.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Redirect\" />
+    <Folder Include="Features\TinyLinkManagement\" />
+  </ItemGroup>
+
 </Project>

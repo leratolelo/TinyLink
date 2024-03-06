@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TinyLink.API.Models;
 using TinyLink.API.Queries;
 using TinyLink.API.Services;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -12,9 +13,14 @@ namespace TinyLink.API.Controllers
     public class RedirectController : ControllerBase
     {
         private readonly ITinyLinkService _tinyLinkService;
-        public RedirectController(ITinyLinkService tinyLinkService)
+        private readonly IVisitService _visitService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public RedirectController(ITinyLinkService tinyLinkService, IVisitService visitService, IHttpContextAccessor httpContextAccessor)
         {
             _tinyLinkService = tinyLinkService;
+            _visitService = visitService;
+            _httpContextAccessor = httpContextAccessor;
+
         }
 
         [HttpGet]
@@ -25,10 +31,14 @@ namespace TinyLink.API.Controllers
             {
                 TinyLink = $"/{code}"
             };
-            var link = _tinyLinkService.GetOriginalLink(query);
-            return Redirect(link);
+            var link = _tinyLinkService.GetTinyLink(query);
+            RecordVisit(link);
+            return Redirect(link.LongLink);
         }
 
-      
+        
+
+
     }
 }
+

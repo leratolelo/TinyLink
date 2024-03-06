@@ -1,16 +1,25 @@
 ﻿namespace TinyLink.API.Models
 {
-    public class TinyLink
+    public class TinyLink : Entity
     {
-        public Guid Id { get; set; }
-
        public Guid UserId { get; set; }
         public string LongLink { get; set; }
         public string Hash { get; set; }
         public string ShortLink { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
-        public bool Deativated { get; set; }
+
+        public TinyLinkDto MapToDto()
+        {
+            return new TinyLinkDto
+            {
+                Id = Id,
+                Deactivated = Deleted,
+                CreatedDateTime = CreatedDateTime,
+                ShortLink = ShortLink,
+                LongLink = LongLink,
+                UserId = UserId,
+                Hash = Hash
+            };
+        }
     }
 
 }

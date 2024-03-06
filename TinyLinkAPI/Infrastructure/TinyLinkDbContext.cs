@@ -7,6 +7,8 @@ namespace TinyLink.API.Infrastructure
     public class TinyLinkDbContext : DbContext
     {
         public DbSet<Models.TinyLink> TinyLinks { get; set; }
+        public DbSet<Models.Visit> Visits { get; set; }
+
         public TinyLinkDbContext(DbContextOptions<TinyLinkDbContext> options) : base (options)
         {
             
@@ -18,7 +20,8 @@ namespace TinyLink.API.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TinyLink>().HasKey(t => t.Id);
-   
+            modelBuilder.Entity<Visit>().HasKey(v => v.Id);
+
         }
     }
 }

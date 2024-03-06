@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TinyLink.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d1a3854af1a95639006457493094d118577b89d")]
 [assembly: System.Reflection.AssemblyProductAttribute("TinyLink.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TinyLink.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -31,7 +31,7 @@ namespace TinyLink.API.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Deativated")
+                    b.Property<bool>("Deactivated")
                         .HasColumnType("bit");
 
                     b.Property<string>("Hash")
@@ -55,6 +55,49 @@ namespace TinyLink.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TinyLinks");
+                });
+
+            modelBuilder.Entity("TinyLink.API.Models.Visit", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Cookies")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Device")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Extras")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Headers")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IpAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("LinkId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Referrer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LinkId");
+
+                    b.ToTable("Visits");
                 });
 
             modelBuilder.Entity("TinyLink.TinyLink", b =>
@@ -84,6 +127,17 @@ namespace TinyLink.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TinyLink");
+                });
+
+            modelBuilder.Entity("TinyLink.API.Models.Visit", b =>
+                {
+                    b.HasOne("TinyLink.API.Models.TinyLink", "Link")
+                        .WithMany()
+                        .HasForeignKey("LinkId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Link");
                 });
 #pragma warning restore 612, 618
         }

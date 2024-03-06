@@ -11,5 +11,6 @@ namespace TinyLink.API.Models
         public DateTime CreatedDateTime { get; set; }
         public string ShortLink { get; set; }
         public string LongLink { get; set; }
+        public string Hash { get; set; }
     }
 }

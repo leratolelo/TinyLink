@@ -21,7 +21,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ITinyLinkService,TinyLinkService>();
+builder.Services.AddScoped<IVisitService, VisitService>();
 builder.Services.AddScoped<IGenericRepository<TinyLink.API.Models.TinyLink> ,GenericRepository<TinyLink.API.Models.TinyLink>>();
+builder.Services.AddScoped<IGenericRepository<TinyLink.API.Models.Visit>, GenericRepository<TinyLink.API.Models.Visit>>();
 
 
 var configuration = builder.Configuration;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Linq.Expressions;
 using TinyLink.API.Commands;
 using TinyLink.API.Infrastructure;
 using TinyLink.API.Models;
@@ -21,10 +22,14 @@ namespace TinyLink.API.Services
         }
         public Models.TinyLink CreateTinyLink(CreateTinyLinkCommand command)
         {
+
+            string salt = "R#nd0mS@ltV@lue";
+            var saltedLongLink = $"{command.LongLink}{salt}";
+
             var baseUrl =  $"{_httpContextAccessor.HttpContext.Request.Scheme}//{_httpContextAccessor.HttpContext.Request.Host.Value}/";
             LinkGenerator.SetBaseURL(baseUrl);
             HashHelper hashHelper = new HashHelper();
-            string hash = hashHelper.GenerateHashUrl(command.LongLink);
+            string hash = hashHelper.GenerateHashUrl(saltedLongLink); //hashHelper.GenerateHashUrl(command.LongLink);
             var shortLink = LinkGenerator.GenerateShortLink(baseUrl , hash);
 
             var newTinyLink = new Models.TinyLink
@@ -34,9 +39,9 @@ namespace TinyLink.API.Services
                 LongLink = command.LongLink,
                 ShortLink = shortLink,
                 Hash = hash,
-                CreatedDate = DateTime.Now,
-                ModifiedDate = DateTime.Now.AddMonths(1),
-                Deativated = false
+                CreatedDateTime = DateTime.Now,
+                UpdatedDateTime = DateTime.Now.AddMonths(1),
+                Deleted = false
             };
 
             _genericRepository.Add(newTinyLink);
@@ -44,19 +49,28 @@ namespace TinyLink.API.Services
             return newTinyLink;
         }
 
+        public Models.TinyLink GetTinyLink(ConnectToTinyLinkQuery query)
+        {
+            var hash = query.TinyLink.Split('/').Last();
+            var tinyLink = _genericRepository.GetByCondition(x => x.Hash == hash).FirstOrDefault();
+            return tinyLink;
+        }
+
         public string GetOriginalLink(ConnectToTinyLinkQuery query)
         {
             var hash = query.TinyLink.Split('/').Last();
             var tinyLink = _genericRepository.GetByCondition(x => x.Hash == hash).FirstOrDefault();
             return tinyLink?.LongLink ?? string.Empty;
+            
         }
+
 
         void ITinyLinkService.DeleteTinyLink(Guid id)
         {
             var link = _genericRepository.GetById(id);
             if(link != null )
             {
-                link.Deativated = true;
+                link.Deleted = true;
                 _genericRepository.Update(link);
                 _genericRepository.Save();
             }
@@ -68,36 +82,27 @@ namespace TinyLink.API.Services
             if (link != null)
             {
                 link.LongLink = dto.LongLink;
-                link.ModifiedDate = DateTime.Now;
-                link.Deativated = dto.Deactivated;
+                link.UpdatedDateTime = DateTime.Now;
+                link.Deleted = dto.Deactivated;
                 _genericRepository.Update(link);
                 _genericRepository.Save();
             }
         }
 
-        public TinyLinkDto MapToDto(Models.TinyLink link)
-        {
-            return new TinyLinkDto
-            {
-                Id = link.Id,
-                Deactivated = link.Deativated,
-                CreatedDateTime = link.CreatedDate,
-                ShortLink = link.ShortLink,
-                LongLink = link.LongLink,
-                UserId = link.UserId
-            };
-        }
-
         public IEnumerable<TinyLinkDto> GetAllTinyLinks()
         {
-           
-            return _genericRepository.GetAll().Where(x => !x.Deativated).Select(MapToDto);
+            return _genericRepository.GetAll().Where(x => !x.Deleted).Select(x => x.MapToDto());
         }
 
         public IEnumerable<TinyLinkDto> GetTinyLinksByUserId(Guid userId)
         {
 
-            return _genericRepository.GetAll().Where(x => !x.Deativated && x.UserId == userId).Select(MapToDto);
+            return _genericRepository.GetAll().Where(x => !x.Deleted && x.UserId == userId).Select(x => x.MapToDto());
+        }
+        public IEnumerable<Models.TinyLink> GetTinyLinkByHash(string hash)
+        {
+            var tinyLink = _genericRepository.GetByCondition(x => x.Hash == hash).FirstOrDefault();
+            yield return tinyLink;
         }
 
     }
