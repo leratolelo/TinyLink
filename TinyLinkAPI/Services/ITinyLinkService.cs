@@ -1,5 +1,5 @@
 ﻿using TinyLink.API.Commands;
-using TinyLink.API.Models;
+using TinyLink.API.Models.DTOs;
 using TinyLink.API.Queries;
 
 namespace TinyLink.API.Services

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TinyLink.API.Infrastructure;
 using TinyLink.API.Services;
-using TinyLink.API.Models;
 using System.Security.Policy;
 using TinyLink.API.Commands;
 using TinyLink.API.Queries;
+using TinyLink.API.Models.DTOs;
 
 namespace TinyLink.API.Controllers
 {

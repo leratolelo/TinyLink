@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MTTH88+4hVbWsnHK3bGFfX0bCDhftd7NwnXQ7vYcq6sIw/C8VCs5yGT7CxXFPHzpHmOdvMod9jDBD3lAZt06dA==",
+  "dgSpecHash": "/uxSq5st0PMLRHZGeNuqut1Tb9JGMFUWzPatlKrHXgfe5aMI/l4XdQpfIrOvbptgviC/2NcmPGV+Z3aMoQ1XNA==",
   "success": true,
   "projectFilePath": "D:\\TinyLink\\TinyLink\\TinyLink.csproj",
   "expectedPackageFiles": [
@@ -54,7 +54,11 @@
     "C:\\Users\\lerato.molokomme\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
     "C:\\Users\\lerato.molokomme\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\lerato.molokomme\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
-    "C:\\Users\\lerato.molokomme\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\lerato.molokomme\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\lerato.molokomme\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.28\\microsoft.windowsdesktop.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\lerato.molokomme\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\lerato.molokomme\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\lerato.molokomme\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.28\\microsoft.netcore.app.host.win-x64.6.0.28.nupkg.sha512"
   ],
   "logs": []
 }

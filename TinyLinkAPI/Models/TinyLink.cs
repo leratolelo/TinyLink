@@ -1,4 +1,6 @@
-﻿namespace TinyLink.API.Models
+﻿using TinyLink.API.Models.DTOs;
+
+namespace TinyLink.API.Models
 {
     public class TinyLink : Entity
     {

@@ -32,7 +32,7 @@ namespace TinyLink.API.Controllers
                 TinyLink = $"/{code}"
             };
             var link = _tinyLinkService.GetTinyLink(query);
-            RecordVisit(link);
+            _visitService.RecordVisit(link);
             return Redirect(link.LongLink);
         }
 
